@@ -20,17 +20,23 @@ function Login(){
     const handleSubmit =(event)=>{
         event.preventDefault();
         setErrors(validation(values));
-        if( errors.email === ""  && errors.password === "" ){
-            axios.post('http://localhost:8081/login',values)
-            .then(res => {
-                if(res.data === "Succes"){
-                    navigat('/home')
-                }else {
-                    alert("No encontrado el usuario")
-                }
-            })
-            .catch(err => console.log(err));
-         }
+        if (errors.email === "" && errors.password === "") {
+            axios.post('http://localhost:8081/login', values)
+                .then(res => {
+                    if (res.data.message === "Success") {
+                        // Usuario encontrado, redirigir a la página de inicio
+                        navigat('/home');
+                    } else {
+                        // Usuario no encontrado, mostrar alerta
+                        alert("No se encontró el usuario. Por favor, revisa tus credenciales.");
+                    }
+                })
+                .catch(err => {
+                    // Manejar errores de conexión u otros errores
+                    console.error('Error al iniciar sesión:', err);
+                    alert("Error al iniciar sesión. Inténtalo de nuevo más tarde.");
+                });
+        }
     }
     return (
         <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>

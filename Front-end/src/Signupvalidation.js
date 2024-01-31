@@ -1,34 +1,23 @@
 function validation(values) {
+    let errors = {};
 
-        let error = {}
-        const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-     
-        if(values.name === ""){
-            error.name  = "El nombre no debe estar vacio"
-    
-        }else {
-            error.email = ""
-        }
+    if (!values.name.trim()) {
+        errors.name = "El nombre no debe estar vacío";
+    }
 
-        if(values.email === ""){
-            error.email = "El email no debe estar vacio"
-        }else if (!email_pattern.test(values.email)){
-            error.email = "Email no encontrado"
-        }
-        else {
-            error.email = ""
-        }
+    if (!values.email.trim()) {
+        errors.email = "El email no debe estar vacío";
+    } else if (!emailPattern.test(values.email)) {
+        errors.email = "El formato del email es inválido";
+    }
 
-        if(values.password === ""){
-            error.password = "La contraseña no puede estar vacio"
-        }else {
-            error.password = ""
-        }
+    if (!values.password.trim()) {
+        errors.password = "La contraseña no puede estar vacía";
+    }
 
-
-        return error;
-
-
+    return errors;
 }
+
 export default validation;
