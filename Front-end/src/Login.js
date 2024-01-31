@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import validation from './LoginValidation';
 import axios from 'axios';
-
+import './css/login.css';
 
 function Login(){
 
@@ -39,8 +39,8 @@ function Login(){
         }
     }
     return (
-        <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
-            <div className="bg-white p-3 rounded  w-25">    
+        <div className='d-flex justify-content-center align-items-center bg-custom-image vh-100'>
+            <div className="bg-wh p-3 rounded  w-25">    
             <h2>Iniciar sesion</h2>
     
                 <form action="" onSubmit={handleSubmit}>

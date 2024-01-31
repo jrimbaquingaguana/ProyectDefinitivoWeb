@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import validation from './Signupvalidation';
 import axios from 'axios';
+import './css/login.css';
 
 function Signup() {
     const [values, setValues] = useState({
@@ -23,8 +24,8 @@ function Signup() {
         const validationErrors = validation(values);
         setErrors(validationErrors);
         
-        // No necesitas esperar 0 ms, simplemente continúa después de establecer los errores
-       
+        // Verifica si hay errores de validación
+        if (Object.keys(validationErrors).length === 0) {
             try {
                 const res = await axios.post('http://localhost:8081/signup', values);
                 console.log("Server response:", res.data); // Verifica la respuesta del servidor
@@ -38,13 +39,17 @@ function Signup() {
             } catch (err) {
                 console.error("Error en la solicitud:", err); // Maneja los errores de la solicitud
             }
-        
+        } else {
+            // Muestra un mensaje de error si hay errores de validación
+            console.log("Hay errores de validación:", validationErrors);
+        }
     };
+    
     
 
     return (
-        <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
-            <div className="bg-white p-3 rounded  w-25">
+        <div className='d-flex justify-content-center align-items-center bg-custom-image  vh-100'>
+            <div className="bg-wh p-3 rounded  w-25">
                 <h2>Crear cuenta</h2>
                 <form onSubmit={handleSubmit}>
                     <div className='mb-3'>

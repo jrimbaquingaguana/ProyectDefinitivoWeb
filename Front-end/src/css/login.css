@@ -1,0 +1,10 @@
+.bg-custom-image {
+    background-image: url('../image/login-bg.png'); /* Reemplaza 'imagen1.jpg' con la ruta de tu imagen */
+    background-size: 100% auto; /* Ajusta el ancho de la imagen al 150% del contenedor y mantiene la altura automática */
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    
+    background-position: right; /* Coloca la imagen a la derecha */
+  }
+  .bg-wh{
+    background-color: rgba(255, 255, 255, 0.7); /* Hace que el fondo blanco sea semi-transparente */
+  }
