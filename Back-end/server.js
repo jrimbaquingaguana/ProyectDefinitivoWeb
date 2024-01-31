@@ -15,14 +15,14 @@ const db = mysql.createConnection({
 
 app.post('/signup', (req, res) =>{
     const { name, email, password } = req.body;
-    const sql = "INSERT INTO login (name, email, password) VALUES (?, ?, ?)";
+    const sql = "INSERT INTO login (`name`, `email`,`password`) VALUES (?, ?, ?)";
     db.query(sql, [name, email, password], (err, results) => {
         if (err) {
             console.error("Error al realizar la consulta en la base de datos:", err);
-            return res.status(1).json({ message: "Error al crear cuenta" });
+            return res.status(500).json({ message: "Error al crear cuenta" });
         } else {
             console.log("Datos insertados correctamente en la base de datos:", results);
-            return res.status(1).json({ message: "Cuenta creada exitosamente" });
+            return res.status(200).json({ message: "Cuenta creada exitosamente" });
         }
     });
 });

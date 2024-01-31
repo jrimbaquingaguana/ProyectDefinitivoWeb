@@ -24,7 +24,7 @@ function Signup() {
         setErrors(validationErrors);
         
         // No necesitas esperar 0 ms, simplemente continúa después de establecer los errores
-        if (validationErrors.name === "" && validationErrors.email === "" && validationErrors.password === "") {
+       
             try {
                 const res = await axios.post('http://localhost:8081/signup', values);
                 console.log("Server response:", res.data); // Verifica la respuesta del servidor
@@ -38,7 +38,7 @@ function Signup() {
             } catch (err) {
                 console.error("Error en la solicitud:", err); // Maneja los errores de la solicitud
             }
-        }
+        
     };
     
 
@@ -83,6 +83,7 @@ function Signup() {
                         />
                         {errors.password && <span className='text-danger'> {errors.password}</span>}
                     </div>
+
                     <button type='submit' className='btn btn-success w-100'>Crear cuenta</button>
                     <p>Politicas y condiciones</p>
                     <Link to="/" className='btn btn-default border w-100 bg-light'>Iniciar Sesion</Link>
