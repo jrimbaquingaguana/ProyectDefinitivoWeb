@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "nombre": "Curso de HTML",
+    "imagen": "uploads\\cursohtml.jpg",
+    "descripcion": "Aprende HTML desde cero..."
+  },
+  {
+    "id": 2,
+    "nombre": "Curso de CSS",
+    "imagen": "uploads\\cursocss.jpg",
+    "descripcion": "Aprende CSS desde cero..."
+  },
+  {
+    "id": 3,
+    "nombre": "Curso de JavaScript",
+    "imagen": "uploads\\cursojs.jpg",
+    "descripcion": "Aprende JavaScript desde cero..."
+  },
+  {
+    "id": 4,
+    "nombre": "Curso de React",
+    "imagen": "uploads\\cursoreact.jpg",
+    "descripcion": "Aprende React desde cero..."
+  },
+  {
+    "nombre": "SDA",
+    "descripcion": "ASD",
+    "imagen": "uploads\\imagen-1706714242420.jpg",
+    "id": 5
+  },
+  {
+    "nombre": "d",
+    "descripcion": "sd",
+    "imagen": "uploads\\imagen-1706746224228.jpg",
+    "id": 6
+  }
+]

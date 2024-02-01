@@ -1,0 +1,12 @@
+.curso {
+    cursor: pointer;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.curso img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}

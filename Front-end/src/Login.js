@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import validation from './LoginValidation';
 import axios from 'axios';
+import Home from './Home';
 import './css/login.css';
 
 function Login(){
@@ -25,7 +26,9 @@ function Login(){
                 .then(res => {
                     if (res.data.message === "Success") {
                         // Usuario encontrado, redirigir a la página de inicio
+                        
                         navigat('/home');
+                       
                     } else {
                         // Usuario no encontrado, mostrar alerta
                         alert("No se encontró el usuario. Por favor, revisa tus credenciales.");
