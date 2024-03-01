@@ -22,17 +22,5 @@
     "nombre": "Curso de React",
     "imagen": "uploads\\cursoreact.jpg",
     "descripcion": "Aprende React desde cero..."
-  },
-  {
-    "nombre": "SDA",
-    "descripcion": "ASD",
-    "imagen": "uploads\\imagen-1706714242420.jpg",
-    "id": 5
-  },
-  {
-    "nombre": "d",
-    "descripcion": "sd",
-    "imagen": "uploads\\imagen-1706746224228.jpg",
-    "id": 6
   }
 ]

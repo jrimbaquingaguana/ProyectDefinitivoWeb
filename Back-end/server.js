@@ -15,7 +15,7 @@ const db = mysql.createConnection({
 
 app.post('/signup', (req, res) =>{
     const { name, email, password } = req.body;
-    const sql = "INSERT INTO login (`name`, `email`,`password`) VALUES (?, ?, ?)";
+    const sql = "INSERT INTO login (`name`, `email`,`password`,`rol`) VALUES (?, ?, ? , 'estudiante')";
     db.query(sql, [name, email, password], (err, results) => {
         if (err) {
             console.error("Error al realizar la consulta en la base de datos:", err);
@@ -37,7 +37,7 @@ db.connect((err) => {
     }
 });
 
-app.post('/login', (req, res) =>{
+app.post('/login', (req, res) => {
     const sql = "SELECT * FROM login WHERE `email` =? AND `password` = ?";
     db.query(sql, [req.body.email, req.body.password], (err, results) => {
         if (err) {
@@ -46,12 +46,22 @@ app.post('/login', (req, res) =>{
         }
 
         if (results.length > 0) {
-            return res.json({ message: "Success" }); // Usuario encontrado
+            // Si el usuario inicia sesión correctamente, se envía el rol del usuario en la respuesta
+            const user = results[0];
+            res.status(200).json({
+                message: 'Success',
+                user: {
+                    email: user.email,
+                    rol: user.rol // Aquí se incluye el rol del usuario en la respuesta
+                }
+            });
         } else {
-            return res.status(401).json({ message: "Se encontro el usuario" }); // Usuario no encontrado
+            // Si el inicio de sesión falla, se envía un mensaje de error
+            return res.status(401).json({ message: "Credenciales incorrectas" });
         }
     });
 });
+
 
 
 app.listen(8081, ()=>{

@@ -4,13 +4,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import validation from './LoginValidation';
 import axios from 'axios';
 import Home from './Home';
+import Signup from './Signup';
 import './css/login.css';
 
 function Login(){
 
     const [values, setValues] = useState({
             email: '',
-            password: ''
+            password: '',
+            rol:''
+
         })
      const navigat = useNavigate();
 
@@ -18,17 +21,24 @@ function Login(){
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
     }
-    const handleSubmit =(event)=>{
+    const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(validation(values));
         if (errors.email === "" && errors.password === "") {
             axios.post('http://localhost:8081/login', values)
                 .then(res => {
                     if (res.data.message === "Success") {
-                        // Usuario encontrado, redirigir a la página de inicio
-                        
-                        navigat('/home');
-                       
+                        // Verificar el rol del usuario
+                        const userRole = res.data.user.rol;
+                        if (userRole === "estudiante") {
+                            navigat('/home');
+                        }else if(userRole==="profesor"){
+                            navigat('/signup');
+                        } 
+                        else {
+                            // Usuario no tiene el rol de estudiante, mostrar alerta
+                            alert("No tienes permiso para acceder. Solo los estudiantes pueden iniciar sesión.");
+                        }
                     } else {
                         // Usuario no encontrado, mostrar alerta
                         alert("No se encontró el usuario. Por favor, revisa tus credenciales.");
@@ -40,7 +50,9 @@ function Login(){
                     alert("Error al iniciar sesión. Inténtalo de nuevo más tarde.");
                 });
         }
-    }
+    };
+    
+
     return (
         <div className='d-flex justify-content-center align-items-center bg-custom-image vh-100'>
             <div className="bg-wh p-3 rounded  w-25">    
