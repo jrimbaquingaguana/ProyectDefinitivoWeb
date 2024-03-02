@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import validation from './LoginValidation';
 import axios from 'axios';
 import Home from './Home';
-import Signup from './Signup';
+import Curso from './CursoAdministrador';
 import './css/login.css';
 
 function Login(){
@@ -33,7 +33,7 @@ function Login(){
                         if (userRole === "estudiante") {
                             navigat('/home');
                         }else if(userRole==="profesor"){
-                            navigat('/signup');
+                            navigat('/CursoA');
                         } 
                         else {
                             // Usuario no tiene el rol de estudiante, mostrar alerta

@@ -16,8 +16,9 @@ function Home() {
   return (
     <Router>
       <div className="app">
-        
+        <Navbar />
         <Routes>
+          
           <Route path="/home" element={
             <>
               <ListaCursos key={refreshKey} />
